@@ -5,6 +5,13 @@ function submitForm() {
 	console.log(email+pwd);
     $.get(path, function( data ){
         alert('Data Loaded:' + data);
+
+				var cust = data.getElementsByTagName("Customer");
+				var cust_id = cust[0].getElementsByTagName("id")[0].childNodes[0].nodeValue
+        //window.name = cust_id;
+				localStorage['cust_id'] = cust_id
+				window.location = "http://127.0.0.1:8000"
+				//$(document).ready(function() {});
     });
     return false;
 }

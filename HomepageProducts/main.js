@@ -29,7 +29,7 @@ $.ajax({
    //    		var i;
    //    		var table="<tr><th>ID</th><th>Price</th></tr>";
    //    		var x = data.getElementsByTagName("Product");
-   //    		for (i = 0; i <x.length; i++) { 
+   //    		for (i = 0; i <x.length; i++) {
 			//     table = table + "<tr><td>" +
 			//     x[i].getElementsByTagName("id")[0].childNodes[0].nodeValue +
 			//     "</td><td>" +
@@ -44,15 +44,17 @@ $.ajax({
 
 			//   }
    //    		// document.getElementById("div2").innerHTML=curr;
-			
+
 
 			// document.getElementById("div2").innerHTML = table;
         var i;
-        var table="<table class='table'><tr><th>Id</th><th>Price</th></tr>";
+        var table="<table class='table'><tr><th>ID</th><th>Detail</th><th>Price</th></tr>";
         var x = data.getElementsByTagName("Product");
-        for (i = 0; i <x.length; i++) { 
+        for (i = 0; i <x.length; i++) {
           table += "<tr><td>" +
           x[i].getElementsByTagName("id")[0].childNodes[0].nodeValue +
+          "</td><td>" +
+          x[i].getElementsByTagName("productDetail")[0].childNodes[0].nodeValue +
           "</td><td>" +
           x[i].getElementsByTagName("productPrice")[0].childNodes[0].nodeValue +
           "</td></tr>";
@@ -68,7 +70,7 @@ $.ajax({
 //   var xmlDoc = xml.responseXML;
 //   var table="<tr><th>Artist</th><th>Title</th></tr>";
 //   var x = xmlDoc.getElementsByTagName("CD");
-//   for (i = 0; i <x.length; i++) { 
+//   for (i = 0; i <x.length; i++) {
 //     table += "<tr><td>" +
 //     x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
 //     "</td><td>" +
@@ -77,4 +79,3 @@ $.ajax({
 //   }
 //   document.getElementById("demo").innerHTML = table;
 // }
-
