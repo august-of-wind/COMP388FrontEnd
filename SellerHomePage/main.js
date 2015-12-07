@@ -1,43 +1,34 @@
-  /*
-  onLoad...
-    getCustomer
-    build ViewMyAccount link out of this XML
-    build Search for Products out of this XML
-  */
-
-
   $(document).ready(function()
   {
-        var path = "https://damp-reef-8180.herokuapp.com/services/sellerservice/seller/" + localStorage.getItem("seller_id");
-        var userResponse = $.get(path, function( data ){
-        //alert('Customer GET:' + data + path);
-        }).done(function(data) {
-          sellerXML = data.getElementsByTagName("Seller");
-          sellerName = sellerXML[0].getElementsByTagName("sellerName")[0].childNodes[0].nodeValue;
-          links = sellerXML[0].getElementsByTagName("link");
-          updatePwdLink = links[1].getElementsByTagName("url")[0].childNodes[0].nodeValue;
+    var path = "https://damp-reef-8180.herokuapp.com/services/sellerservice/seller/" + localStorage.getItem("seller_id");
+    var userResponse = $.get(path, function( data ){
+      }).done(function(data) {
+        sellerXML = data.getElementsByTagName("Seller");
+        sellerName = sellerXML[0].getElementsByTagName("sellerName")[0].childNodes[0].nodeValue;
+        links = sellerXML[0].getElementsByTagName("link");
+        updatePwdLink = links[1].getElementsByTagName("url")[0].childNodes[0].nodeValue;
 
 
-          document.getElementById("sellerName").innerHTML = "Welcome " + sellerName + "!";
-        })
-  });
+        document.getElementById("sellerName").innerHTML = "Welcome " + sellerName + "!";
+      })
+    });
   function logout() {
     localStorage.clear();
     window.location.href = "/";
   }
 
-function submitPwdForm() {
-  var newPwd = $('#UpdatePwd').find('input[name="update"]').val();
-  var path = updatePwdLink + newPwd;
-  console.log("newPwd is " + newPwd);
-  console.log("path is " + path);
+  function submitPwdForm() {
+    var newPwd = $('#UpdatePwd').find('input[name="update"]').val();
+    var path = updatePwdLink + newPwd;
+    console.log("newPwd is " + newPwd);
+    console.log("path is " + path);
 
     $.post(path, function( data ){
-        console.log('Data Loaded:' + data);
-        window.location = ".";
+      console.log('Data Loaded:' + data);
+      window.location = ".";
     });
     return false;
-}
+  }
 
 
 
