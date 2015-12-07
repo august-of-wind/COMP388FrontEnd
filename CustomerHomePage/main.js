@@ -16,9 +16,9 @@
           customerAddr = customerXML[0].getElementsByTagName("customerAddr")[0].childNodes[0].nodeValue;
           links = customerXML[0].getElementsByTagName("link");
           myOrders = links[0].getElementsByTagName("url")[0].childNodes[0].nodeValue;
-          updateAddrLink = links[2].getElementsByTagName("url")[0].childNodes[0].nodeValue;
           updatePwdLink = links[1].getElementsByTagName("url")[0].childNodes[0].nodeValue;
-          myBI = links[5].getElementsByTagName("url")[0].childNodes[0].nodeValue;
+          updateAddrLink = links[2].getElementsByTagName("url")[0].childNodes[0].nodeValue;
+          myBI = links[4].getElementsByTagName("url")[0].childNodes[0].nodeValue;
 
           document.getElementById("customerName").innerHTML = "Welcome " + customerName + "!";
           document.getElementById("customerAddr").innerHTML = "Your current account address is " + customerAddr + ".";
