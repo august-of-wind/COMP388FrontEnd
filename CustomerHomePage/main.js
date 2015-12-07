@@ -5,6 +5,7 @@
     build Search for Products out of this XML
   */
 
+
   $(document).ready(function()
   {
         var path = "https://damp-reef-8180.herokuapp.com/services/customerservice/customer/" + localStorage.getItem("cust_id");
@@ -25,6 +26,10 @@
 
         })
   });
+  function logout() {
+    localStorage.clear();
+    window.location.href = "/";
+  }
 
 function submitAddrForm() {
   var newAddr = $('#UpdateAddress').find('input[name="update"]').val();
