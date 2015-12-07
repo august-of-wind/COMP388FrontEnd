@@ -5,3 +5,8 @@
 .btn-group-wrap {
 	text-align: center;
 }
+
+#errorDiv {
+    text-align: center;
+    color: red;
+}
