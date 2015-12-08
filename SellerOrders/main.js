@@ -22,7 +22,7 @@
       method: 'GET',
     }).done(function(data) {
       var i;
-      var table="<table class='table'><tr><th>ID</th><th>Product Name</th><th>Order Status</th><th>Fulfill?</th></tr>";
+      var table="<table class='table'><tr><th>ID</th><th>Product Name</th><th>Order Status</th><th>Fulfill</th></tr>";
       var x = data.getElementsByTagName("Order");
       for (i = 0; i <x.length; i++) {
         var orderLinkNode = x[i].getElementsByTagName("link");
