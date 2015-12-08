@@ -65,7 +65,7 @@
   var rating = $('#ReviewForm').find('input[name="rating"]').val();
   var custId = localStorage.getItem("cust_id");
   var path = reviewURL + "/customer/" + custId + "/detail/" + detail + "/rating/" + rating;
-  console.log("Path= " + path);
+  console.log("Path = " + path);
   $.post(path, function( data ){
   });
     return false;
