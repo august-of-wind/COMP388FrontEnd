@@ -11,6 +11,7 @@
         myOrders = links[0].getElementsByTagName("url")[0].childNodes[0].nodeValue;
         updatePwdLink = links[1].getElementsByTagName("url")[0].childNodes[0].nodeValue;
         updateAddrLink = links[2].getElementsByTagName("url")[0].childNodes[0].nodeValue;
+        searchLink = links[3].getElementsByTagName("url")[0].childNodes[0].nodeValue;
         myBI = links[4].getElementsByTagName("url")[0].childNodes[0].nodeValue;
 
         document.getElementById("customerName").innerHTML = "Welcome " + customerName + "!";
@@ -50,29 +51,57 @@
     return false;
   }
 
-
-
-
-
-
-  function getAllProducts(){
+  function searchProducts(){
 
     $.ajax({
-      url: "https://damp-reef-8180.herokuapp.com/services/productservice/product/",
+      url: searchLink,
       method: 'GET',
     }).done(function(data) {
+      var query = $('#SearchProducts').find('input[name="search"]').val();
+      var buyButton = '<button type="submit" name="submit" class="btn btn-default" onClick="buyProduct(\'' + prodURL + '\')">Buy This Product</button>';
+      console.log("query = " + query);
       var i;
-      var table="<table class='table'><tr><th>ID</th><th>Detail</th><th>Price</th></tr>";
+      var table="<table class='table'><tr><th>ID</th><th>Detail</th><th>Price</th><th>Buy</th></tr>";
       var x = data.getElementsByTagName("Product");
+
       for (i = 0; i <x.length; i++) {
-        table += "<tr><td>" +
-        x[i].getElementsByTagName("id")[0].childNodes[0].nodeValue +
-        "</td><td>" +
-        x[i].getElementsByTagName("productDetail")[0].childNodes[0].nodeValue +
-        "</td><td>" +
-        x[i].getElementsByTagName("productPrice")[0].childNodes[0].nodeValue +
-        "</td></tr>";
+        var prodLink = x[i].getElementsByTagName("link")[0].childNodes[0].nodeValue;
+        var initProdURL = x[i].getElementsByTagName("url")[0].childNodes[0].nodeValue;
+        var prodURL = initProdURL + "/customer/" + localStorage.getItem("cust_id");
+        console.log("buying with link: " + prodURL);
+        if(x[i].getElementsByTagName("productDetail")[0].childNodes[0].nodeValue.indexOf(query) > -1){
+          table += "<tr><td>" +
+          x[i].getElementsByTagName("id")[0].childNodes[0].nodeValue +
+          "</td><td>" +
+          x[i].getElementsByTagName("productDetail")[0].childNodes[0].nodeValue +
+          "</td><td>" +
+          x[i].getElementsByTagName("productPrice")[0].childNodes[0].nodeValue +
+          "</td><td>" + buyButton + "</td></tr>";
+        }
       }
       document.getElementById("div2").innerHTML = table + "</table>";
     });
+    return false;
   }
+
+  function buyProduct(prodURL){
+
+    $.post(prodURL, function(data){
+      console.log("purchased product at " + prodURL);
+    });
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

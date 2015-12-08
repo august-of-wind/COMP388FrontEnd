@@ -1,3 +1,4 @@
+
   $(document).ready(function()
   {
     var path = "https://damp-reef-8180.herokuapp.com/services/customerservice/customer/" + localStorage.getItem("cust_id");
@@ -8,9 +9,28 @@
       customerAddr = customerXML[0].getElementsByTagName("customerAddr")[0].childNodes[0].nodeValue;
       links = customerXML[0].getElementsByTagName("link");
       myOrders = links[0].getElementsByTagName("url")[0].childNodes[0].nodeValue;
-      //orderLink = data.getElementsByTagName("Order");
-      //myReviews = orderLink[3].getElementsByTagName("url")[0].childNodes[0].nodeValue;
 
+      document.getElementById("customerName").innerHTML = "Welcome " + customerName + "!";
+      document.getElementById("customerAddr").innerHTML = "Your current account address is " + customerAddr + ".";
+
+    })
+  });
+
+
+
+  function reviewTrigger(reviewURL){
+  var reviewForm = '<form role="form" id="ReviewForm" onSubmit="return submitForm(\'' + reviewURL + '\');"><div class="row"><div class="form-group col-xs-4 col-xs-offset-4 col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4"><label for="reviewDetail"><h3>Review</h3></label><input type="text" class="form-control" id="reviewDetail" name="reviewDetail"></div></div></div><div class="row"><div class="form-group col-xs-4 col-xs-offset-4 col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4"><label for="rating"><h3>Rating</h3></label><input type="text" class="form-control" id="rating" name="rating"></div></div></div><div class="btn-group-wrap"><div class="btn-group form-group"><button type="submit" name="submit" class="btn btn-default">Submit Review (out of 5 points)</button></div></div>';
+    document.getElementById("reviewField").innerHTML = reviewForm + '</form>';
+  }  $(document).ready(function()
+  {
+    var path = "https://damp-reef-8180.herokuapp.com/services/customerservice/customer/" + localStorage.getItem("cust_id");
+    var userResponse = $.get(path, function( data ){
+    }).done(function(data) {
+      customerXML = data.getElementsByTagName("Customer");
+      customerName = customerXML[0].getElementsByTagName("customerName")[0].childNodes[0].nodeValue;
+      customerAddr = customerXML[0].getElementsByTagName("customerAddr")[0].childNodes[0].nodeValue;
+      links = customerXML[0].getElementsByTagName("link");
+      myOrders = links[0].getElementsByTagName("url")[0].childNodes[0].nodeValue;
       document.getElementById("customerName").innerHTML = "Welcome " + customerName + "!";
       document.getElementById("customerAddr").innerHTML = "Your current account address is " + customerAddr + ".";
 
@@ -44,22 +64,17 @@
       document.getElementById("orderTable").innerHTML = table + "</table>";
     });
   }
-//'<form role="form" id="MyForm"><div class="form-group col-xs-4 col-xs-offset-4 col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4"><label for="email"></label><input type="text" class="form-control" id="email" name="email"></div><button type="submit" name="submit" class="btn btn-default" onClick="reviewPost(\'' + myReviews +'\')">Submit Review</button>';
-  function reviewTrigger(reviewURL){
-  var reviewForm = '<form role="form" id="ReviewForm" onSubmit="return submitForm(\'' + reviewURL + '\');"><div class="row"><div class="form-group col-xs-4 col-xs-offset-4 col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4"><label for="reviewDetail"><h3>Review</h3></label><input type="text" class="form-control" id="reviewDetail" name="reviewDetail"></div></div></div><div class="row"><div class="form-group col-xs-4 col-xs-offset-4 col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4"><label for="rating"><h3>Rating</h3></label><input type="text" class="form-control" id="rating" name="rating"></div></div></div><div class="btn-group-wrap"><div class="btn-group form-group"><button type="submit" name="submit" class="btn btn-default">Submit Review</button></div></div>';
-    document.getElementById("reviewField").innerHTML = reviewForm + '</form>';
-  }
 
   function submitForm(reviewURL) {
   var detail = $('#ReviewForm').find('input[name="reviewDetail"]').val();
   var rating = $('#ReviewForm').find('input[name="rating"]').val();
   var custId = localStorage.getItem("cust_id");
-  var path = reviewURL + "/customer/" + custId + "/detail/" + detail + '/rating/' + rating;
+  var path = reviewURL + "/customer/" + custId + "/detail/" + detail + "/rating/" + rating;
+  console.log("Path= " + path);
   $.post(path, function( data ){
   });
     return false;
 }
-
 
   function reviewPost(url) {
     var path = url + 
@@ -68,12 +83,7 @@
     });
   }
 
-
-
-
-
-
-  function cancelOrder(orderURL){
+ function cancelOrder(orderURL){
     $.get(orderURL, function(data){
       console.log("Order " + orderURL + " cancelled!");
     });
