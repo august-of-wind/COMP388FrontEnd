@@ -58,7 +58,6 @@
       method: 'GET',
     }).done(function(data) {
       var query = $('#SearchProducts').find('input[name="search"]').val();
-      var buyButton = '<button type="submit" name="submit" class="btn btn-default" onClick="buyProduct(\'' + prodURL + '\')">Buy This Product</button>';
       console.log("query = " + query);
       var i;
       var table="<table class='table'><tr><th>ID</th><th>Detail</th><th>Price</th><th>Buy</th></tr>";
@@ -68,6 +67,7 @@
         var prodLink = x[i].getElementsByTagName("link")[0].childNodes[0].nodeValue;
         var initProdURL = x[i].getElementsByTagName("url")[0].childNodes[0].nodeValue;
         var prodURL = initProdURL + "/customer/" + localStorage.getItem("cust_id");
+        var buyButton = '<button type="submit" name="submit" class="btn btn-default" onClick="buyProduct(\'' + prodURL + '\')">Buy This Product</button>';
         console.log("buying with link: " + prodURL);
         if(x[i].getElementsByTagName("productDetail")[0].childNodes[0].nodeValue.indexOf(query) > -1){
           table += "<tr><td>" +
@@ -85,23 +85,8 @@
   }
 
   function buyProduct(prodURL){
-
+    console.log("Posting to" + prodURL);
     $.post(prodURL, function(data){
       console.log("purchased product at " + prodURL);
     });
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
