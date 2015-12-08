@@ -86,6 +86,11 @@ function getReviews(){
     });
 }
 
+function logout() {
+    localStorage.clear();
+    window.location.href = "/";
+  }
+
 function fulfillOrder(orderURL){
   $.get(orderURL, function(data){
     console.log("Order " + orderURL + " fulfilled!");
