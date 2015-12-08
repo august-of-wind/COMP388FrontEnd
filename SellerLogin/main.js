@@ -1,4 +1,4 @@
-function submitForm() {
+function submitLogInForm() {
 	var email = $('#MyForm').find('input[name="email"]').val();
 	var pwd = $('#MyForm').find('input[name="pwd"]').val();
 	var path = 'https://damp-reef-8180.herokuapp.com/services/sellerservice/sellerlogin/' + email + '/' + pwd;
@@ -14,6 +14,18 @@ function submitForm() {
             localStorage['seller_id'] = seller_id
             window.location = "../SellerHomePage"
         }
+    });
+    return false;
+}
+
+function submitSignUpForm() {
+    var email = $('#MyForm').find('input[name="email"]').val();
+    var pwd = $('#MyForm').find('input[name="pwd"]').val();
+    var path = 'https://damp-reef-8180.herokuapp.com/services/sellerservice/seller/sellersignup/sellername/' + email + '/sellerpassword/' + pwd;
+    console.log(email+pwd);
+
+    $.post(path, function( data ){
+        submitLogInForm();
     });
     return false;
 }
