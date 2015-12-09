@@ -8,7 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="main.css">
-    <!-- <script src="main.js"></script> -->
+    <script src="main.js"></script>
   </head>
 
   <body>
@@ -27,11 +27,21 @@
       <div class="col-md-3"></div>
     </div>
 
+<!--     <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4"><h3><a href="/" onClick="return searchProducts();">View All Products</a></h3></div>
+      <div class="col-md-4"></div>
+    </div> -->
+
     <div class="row">
-      <div class="col-md-4"></div>
-      <div class="col-md-4"><h3><a href="HomepageProducts/index.html">View All Products</a></h3></div>
-      <div class="col-md-4"></div>
+      <button type="submit" name="submit" class="btn btn-default" onClick="searchProducts()">View All Products</button>
     </div>
+    
+    
+    
+
+
+    <div id="prodTable" class="container"> </div>
 
 
 

@@ -73,7 +73,6 @@ function getReviews(){
       var table="<table class='table'><tr><th>Review</th><th>Customer Name</th><th>Rating (out of 5)</th></tr>";
       var x = data.getElementsByTagName("Review");
       for (i = 0; i <x.length; i++) {
-        //console.log(reviewURL);
         table += "<tr><td>" +
         x[i].getElementsByTagName("reviewDetail")[0].childNodes[0].nodeValue +
         "</td><td>" +
