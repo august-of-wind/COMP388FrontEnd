@@ -2,9 +2,7 @@
 This is the front end for the final project in Web Services Programming at Loyola University Chicago, taught by Dr. Berhane Zewdie.
 
 ## Project Overview
-This project issues POST and GET requests on a Heroku backend with our RESTful API. We use this to create a front-end for  
-a mocked e-commerce site. We use HATEOAS by parsing through XML from backend responses to generate links dynamically to operate our  
-front-end.
+This project issues POST and GET requests on a Heroku backend with our RESTful API. We use this to create a front-end for a mocked e-commerce site. We use HATEOAS by parsing through XML from backend responses to generate links dynamically to operate our front-end.
 
 ## Launching our Front End
 In order to launch our front end project...
