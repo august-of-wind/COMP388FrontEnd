@@ -17,3 +17,18 @@ function submitForm() {
     });
     return false;
 }
+
+function submitSignUpForm() {
+    console.log("We have reached the signup form");
+    var email = $('#MyForm').find('input[name="email"]').val();
+    var pwd = $('#MyForm').find('input[name="pwd"]').val();
+    //A log to see if this was a user's initial signup
+    localStorage['BIPrompt'] = 1;
+    var path = 'https://damp-reef-8180.herokuapp.com/services/customerservice/customer/customersignup/customername/' + email + '/customerpassword/' + pwd;
+    console.log(email+pwd);
+
+    $.post(path, function( data ){
+        submitForm();
+    });
+    return false;
+}
