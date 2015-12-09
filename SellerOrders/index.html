@@ -11,26 +11,51 @@
     <script src="main.js"></script>
   </head>
 
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand">Zewdie Market</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="javascript:logout()">Log Out</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
   <body>
 
     <div class="row">
       <div class="span12">
         <h1>My Orders</h1>
-        <div id="sellerName"> </div>
+        <div style="color:green;font-size: 150%;" id="sellerName"> </div>
         <h3>Your Account Details</h3>
 
-        <div id="myOrders">
-          <button type="submit" name="submit" class="btn btn-default" onClick="getOrders()">View My Orders</button>
+        <div id="myOrders" class="col-md-4">
+          <button type="submit" name="submit" class="btn btn-info" onClick="getOrders()">View My Orders</button>
         </div>
 
-        <div id="myProducts">
-          <button type="submit" name="submit" class="btn btn-default" onClick="getProducts()">View My Products</button>
+        <div id="myProducts" class="col-md-4">
+          <button type="submit" name="submit" class="btn btn-success" onClick="getProducts()">View My Products</button>
         </div>
 
-        <div id="myReview">
-          <button type="submit" name="submit" class="btn btn-default" onClick="getReviews()">View My Reviews</button>
+        <div id="myReview" class="col-md-4">
+          <button type="submit" name="submit" class="btn btn-warning" onClick="getReviews()">View My Reviews</button>
         </div>
 
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
         <div id="sellerTable" class="container"> </div>
 
       </div>

@@ -78,6 +78,11 @@
     });
   }
 
+  function logout() {
+    localStorage.clear();
+    window.location.href = "/";
+  }
+
  function cancelOrder(orderURL){
     $.get(orderURL, function(data){
       console.log("Order " + orderURL + " cancelled!");
